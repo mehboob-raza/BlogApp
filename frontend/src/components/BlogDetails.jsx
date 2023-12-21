@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Box, Container, Grid, Typography, InputLabel, TextField, Button } from '@mui/material'
 import {useNavigate} from 'react-router-dom'
+import {serverUrl} from '../App'
 
 
 const BlogDetails = () => {
@@ -17,7 +18,7 @@ const BlogDetails = () => {
   
   const id = useParams().id
   const fetchDetails = async () => {
-    const res = await axios.get(`http://localhost:5000/api/blog/${id}`)
+    const res = await axios.get(`${serverUrl}/api/blog/${id}`)
       .catch(err => console.log(err))
     const data = await res.data
     return data
@@ -25,7 +26,7 @@ const BlogDetails = () => {
   // console.log(blogs);
 
   const sendRequest = async () => {
-    const res = await axios.put(`http://localhost:5000/api/blog/update/${id}`, {
+    const res = await axios.put(`${serverUrl}/api/blog/update/${id}`, {
       title: inputs.title,
       description: inputs.description,
     }).catch(err => console.log(err))

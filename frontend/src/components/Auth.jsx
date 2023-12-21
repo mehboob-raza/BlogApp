@@ -15,6 +15,8 @@ import {useDispatch} from 'react-redux'
 import { login } from '../store/AuthSlice';
 import {useNavigate} from 'react-router-dom'
 // import auth from '../store/store.js'
+import {serverUrl} from '../App'
+
 
 export default function Auth() {
   const [isSignup, setIsSignup] = React.useState(false)
@@ -46,7 +48,7 @@ export default function Auth() {
   };
 
   const sendRequest = async(type='login') => {
-    const res = await axios.post(`http://localhost:5000/api/user/${type}`, {
+    const res = await axios.post(`${serverUrl}/api/user/${type}`, {
       name: inputs.name,
       email: inputs.email,
       password: inputs.password

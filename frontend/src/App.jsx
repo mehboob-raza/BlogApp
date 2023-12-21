@@ -9,6 +9,11 @@ import { useSelector , useDispatch} from 'react-redux'
 import { useEffect } from "react"
 import { login } from "./store/AuthSlice"
 
+
+export const serverUrl = import.meta.env.PROD
+  ? "https://blog-vercel-server-xi.vercel.app/"
+  : "http://localhost:5000";
+
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
   const dispatch = useDispatch()

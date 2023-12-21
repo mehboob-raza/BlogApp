@@ -13,6 +13,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
+import {serverUrl} from '../App'
 
 
 export default function BlogCard({title, description, imageUrl, user, isUser, id}) {
@@ -24,7 +25,7 @@ export default function BlogCard({title, description, imageUrl, user, isUser, id
 
 
   const deleteRequest = async() => {
-    const res = await axios.delete(`http://localhost:5000/api/blog/${id}`).catch(err => console.log(err))
+    const res = await axios.delete(`${serverUrl}/api/blog/${id}`).catch(err => console.log(err))
     const data = res.data
     return data
   }
@@ -56,7 +57,7 @@ export default function BlogCard({title, description, imageUrl, user, isUser, id
           </IconButton>
         }
         title={title}
-        subheader="September 14, 2016"
+        // subheader="September 14, 2016"
       />
       <CardMedia
         component="img"

@@ -1,7 +1,8 @@
 import React from 'react'
 import {Box,Container, Grid, Typography, InputLabel,TextField,Button } from '@mui/material'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import {serverUrl} from '../App'
 
 const AddBlog = () => {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ const AddBlog = () => {
   })
 
   const sendRequest = async () => {
-    const res = await axios.post('http://localhost:5000/api/blog/add', {
+    const res = await axios.post(`${serverUrl}/api/blog/add`, {
       title: inputs.title,
       description: inputs.description,
       image: inputs.image,

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import BlogCard from './BlogCard'
+import {serverUrl} from '../App'
 
 
 const UserBlogs = () => {
   const [user, setUser] = useState()
   const id = localStorage.getItem('userId')
   const sendRequest = async() => {
-    const res = await axios.get(`http://localhost:5000/api/blog/user/${id}`)
+    const res = await axios.get(`${serverUrl}/api/blog/user/${id}`)
       .catch(err => console.log(err))
     const data = res.data
     return data
